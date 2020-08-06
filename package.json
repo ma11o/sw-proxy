@@ -1,0 +1,25 @@
+{
+  "name": "sw-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "AuthHelper.js",
+  "scripts": {
+    "build-AuthHelper": "browserify --s AuthHelper -o AuthHelperBundle.js AuthHelper$BABEL_ENV.js && babel --out-file AuthHelperBundle.js AuthHelperBundle.js",
+    "build-ServiceWorker": "browserify -o ServiceWorker.js ServiceWorkerCore.js && babel --out-file ServiceWorker.js ServiceWorker.js",
+    "build": "npm run build-AuthHelper && npm run build-ServiceWorker",
+    "build-compat": "BABEL_ENV=Compat npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-preset-minify": "^0.5.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.2",
+    "browserify-header": "^1.0.1"
+  },
+  "dependencies": {}
+}

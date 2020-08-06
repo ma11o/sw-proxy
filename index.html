@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Service worker demo</title>
+
+  </head>
+
+  <body>
+
+    <input type="button" id="btnSubmit" value="送信">
+
+    <script src="AuthHelperBundle.js"></script>
+
+    <script>
+    (function () {
+      AuthHelper.init({
+          authorizationEndpoint: 'https://cat-fact.herokuapp.com',
+          tokenEndpoint: 'https://cat-fact.herokuapp.com/facts/random'
+      })
+    }());
+
+    window.onload = function () {
+      document.getElementById('btnSubmit').onclick = function () {
+        fetch('https://cat-fact.herokuapp.com/facts/randomaaa')
+        .then(response => response.json())
+        .then(data => console.log(data));
+      }
+    };
+    </script>
+  </body>
+</html>
